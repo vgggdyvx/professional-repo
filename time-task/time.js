@@ -1,20 +1,25 @@
 function timeDay (a, b, c){
+    let finalTime = []
     if (c > 60){
         a = Math.floor(c / 60) + a
         if (b + (c % 60 ) >= 60){
             let e = b + (c % 60)
-            console.log(Math.floor(e / 60) + a, e % 60)
+            finalTime.push(Math.floor(e / 60) + a, e % 60)
         }
-        if  (a >= 24) {
-            console.log(a - 24, b + (c % 60))
+        if  (a >= 23) {
+            finalTime.push(a - 23, b + (c % 60))
         }
     }else {
         if ((c + b) >= 60){
             let d = c + b
-            console.log(Math.floor(d / 60) + a, d % 60)
+            finalTime.push(Math.floor(d / 60) + a, d % 60)
+            if  (a >= 23) {
+                finalTime.push(a - 23, d % 60)
+            }
         }else{
-            console.log(a, (c + b))
+            finalTime.push(a, (c + b))
         }
     }
+    return finalTime
 }
-timeDay(18, 39, 141)
+console.log(timeDay(22, 15, 45))
